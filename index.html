@@ -1,2 +1,74 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10131b"><title>VYRO</title><style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b0e14;color:#f5f6fb;font:16px system-ui,sans-serif}header{padding:18px;background:#151a24;border-bottom:1px solid #293044}.logo{font-size:28px;font-weight:900;letter-spacing:2px;color:#a99eff}main{max-width:650px;margin:22px auto;padding:0 14px}.panel,.post,.stories{background:#151a24;border:1px solid #293044;border-radius:18px;margin-bottom:16px;padding:16px}.stories{display:flex;justify-content:space-around;color:#b9c0ce}.avatar{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#8b7cff,#36c9c2);color:#080a10;font-weight:900}.composer{display:flex;gap:10px}.composer input{flex:1;min-width:0;background:#0b0e14;border:1px solid #293044;border-radius:12px;padding:12px;color:white;font:inherit}button{border:0;border-radius:12px;padding:10px 16px;background:#8b7cff;color:white;font:inherit;cursor:pointer}.posthead{display:flex;align-items:center;gap:10px}.muted{color:#9aa5b5;font-size:12px}.body{white-space:pre-wrap;line-height:1.8;margin:14px 0}.actions{display:flex;gap:10px;border-top:1px solid #293044;padding-top:12px}.actions button{background:transparent;color:#b9c0ce}.active{color:#b3aaff!important}</style></head><body><header><div class="logo">VYRO</div><div class="muted">تواصل بطريقتك</div></header><main><section class="stories"><span>قصتك ＋</span><span>مريم</span><span>عمر</span><span>سارة</span><span>يوسف</span></section><section class="panel"><div class="composer"><input id="txt" maxlength="500" placeholder="بتفكر في إيه؟"><button id="publish">نشر</button></div></section><section id="feed"><article class="post"><div class="posthead"><div class="avatar">V</div><div><b>فريق VYRO</b><div class="muted">منشور ترحيبي</div></div></div><div class="body">أهلاً بيك في VYRO 👋\nمساحة جديدة تجمعنا. شارك أفكارك ولحظاتك مع الناس.</div><div class="actions"><button class="like">♡ إعجاب</button><button class="comment">💬 تعليق</button><button class="share">↗ مشاركة</button></div></article></section><p class="muted" style="text-align:center">نموذج أولي قيد التطوير</p></main><script>const input=document.querySelector('#txt'),feed=document.querySelector('#feed');function actions(el){el.querySelector('.like').onclick=e=>{e.target.classList.toggle('active');e.target.textContent=e.target.classList.contains('active')?'♥ أعجبك':'♡ إعجاب'};el.querySelector('.comment').onclick=()=>{const v=prompt('اكتب تعليقك');if(v)alert('تم تسجيل التعليق في النموذج التجريبي')};el.querySelector('.share').onclick=()=>{if(navigator.share)navigator.share({title:'VYRO',text:el.querySelector('.body').textContent}).catch(()=>{});else alert('ميزة المشاركة التجريبية')}}document.querySelectorAll('.post').forEach(actions);document.querySelector('#publish').onclick=()=>{const v=input.value.trim();if(!v)return;const p=document.createElement('article');p.className='post';p.innerHTML='<div class="posthead"><div class="avatar">أ</div><div><b>أنت</b><div class="muted">الآن</div></div></div><div class="body"></div><div class="actions"><button class="like">♡ إعجاب</button><button class="comment">💬 تعليق</button><button class="share">↗ مشاركة</button></div>';p.querySelector('.body').textContent=v;actions(p);feed.prepend(p);input.value=''};</script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d14">
+  <meta name="description" content="VYRO — مساحة تجمعك بالناس والأفكار واللحظات.">
+  <title>VYRO — تواصل بطريقتك</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="VYRO الرئيسية">VYRO<span>.</span></a>
+    <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في VYRO" aria-label="بحث"></label>
+    <button class="icon-btn" id="installBtn" hidden aria-label="تثبيت التطبيق">⇩</button>
+    <button class="avatar avatar-small" id="topProfile" aria-label="الملف الشخصي">أ</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar card">
+      <div class="profile-mini"><div class="avatar avatar-large" id="sideAvatar">أ</div><div><strong id="sideName">أهلاً بيك</strong><small>@vyro_user</small></div></div>
+      <nav class="side-nav" aria-label="التنقل الرئيسي">
+        <button class="nav-link active" data-view="home">⌂ <span>الرئيسية</span></button>
+        <button class="nav-link" data-view="explore">⌕ <span>استكشف</span></button>
+        <button class="nav-link" data-view="notifications">♧ <span>الإشعارات</span><i id="notificationDot"></i></button>
+        <button class="nav-link" data-view="profile">◉ <span>ملفي الشخصي</span></button>
+      </nav>
+      <div class="sidebar-note">مساحتك. صوتك. عالمك.<b>VYRO</b></div>
+    </aside>
+
+    <section class="feed-column">
+      <section class="stories card">
+        <div class="section-heading"><strong>القصص</strong><small>لحظات سريعة من الناس</small></div>
+        <div class="story-row" id="storyRow">
+          <button class="story add-story" id="addStory"><span class="story-ring"><b>＋</b></span><small>أضف قصتك</small></button>
+          <div class="story"><span class="story-ring gradient-a">م</span><small>مريم</small></div>
+          <div class="story"><span class="story-ring gradient-b">ع</span><small>عمر</small></div>
+          <div class="story"><span class="story-ring gradient-c">س</span><small>سارة</small></div>
+          <div class="story"><span class="story-ring gradient-d">ي</span><small>يوسف</small></div>
+        </div>
+      </section>
+
+      <section class="composer card" id="composer">
+        <div class="composer-top"><div class="avatar" id="composerAvatar">أ</div><textarea id="postText" rows="2" maxlength="1000" placeholder="إيه اللي حابب تشاركه؟"></textarea></div>
+        <div class="composer-bottom"><span id="charCount">0/1000</span><button class="primary-btn" id="publishBtn">انشر منشورك ↗</button></div>
+      </section>
+
+      <div class="feed-heading"><h1 id="viewTitle">آخر المنشورات</h1><span class="live-dot">● مباشر على جهازك</span></div>
+      <div id="feed" class="feed" aria-live="polite"></div>
+    </section>
+
+    <aside class="rightbar">
+      <section class="card welcome-card"><span class="eyebrow">مرحباً بك في</span><div class="welcome-logo">VYRO<span>.</span></div><p>مكانك للتواصل ومشاركة اللحظات والأفكار.</p><button class="outline-btn" id="editProfileBtn">خصص ملفك الشخصي</button></section>
+      <section class="card trends"><div class="section-heading"><strong>اكتشف VYRO</strong><small>مواضيع مقترحة</small></div><p># يوميات</p><p># تقنية</p><p># تصوير</p><p># أفكار_جديدة</p></section>
+      <p class="footer-note">VYRO © 2026 · نسخة تجريبية</p>
+    </aside>
+  </main>
+
+  <nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home">⌂<small>الرئيسية</small></button><button data-view="explore">⌕<small>استكشف</small></button><button data-view="notifications">♧<small>تنبيهات</small></button><button data-view="profile">◉<small>حسابي</small></button></nav>
+
+  <dialog id="profileDialog" class="dialog">
+    <form method="dialog" id="profileForm"><div class="dialog-head"><h2>ملفك الشخصي</h2><button class="close-btn" value="cancel" aria-label="إغلاق">×</button></div>
+      <label>اسم العرض<input id="profileName" maxlength="32" required placeholder="اسمك"></label>
+      <label>نبذة عنك<textarea id="profileBio" maxlength="160" rows="3" placeholder="اكتب نبذة بسيطة..."></textarea></label>
+      <div class="dialog-actions"><button class="outline-btn" value="cancel">إلغاء</button><button class="primary-btn" id="saveProfile" value="default">حفظ التغييرات</button></div>
+    </form>
+  </dialog>
+  <dialog id="storyDialog" class="dialog"><form method="dialog"><div class="dialog-head"><h2>قصتك</h2><button class="close-btn" value="cancel">×</button></div><p>ميزة القصص قيد التطوير. تقدر تنشر لحظتك كمنشور دلوقتي.</p><button class="primary-btn" value="cancel">تمام</button></form></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>
