@@ -16,7 +16,7 @@
     <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في VYRO" aria-label="بحث"></label>
     <button class="icon-btn" id="installBtn" hidden aria-label="تثبيت التطبيق">⇩</button>
     <button class="icon-btn settings-shortcut" data-view="settings" aria-label="الإعدادات" title="الإعدادات">⚙</button>
-    <button class="avatar avatar-small" id="topProfile" aria-label="الملف الشخصي">أ</button>
+    <button class="outline-btn auth-open" id="authButton">دخول / حساب جديد</button><button class="avatar avatar-small" id="topProfile" aria-label="الملف الشخصي">أ</button>
   </header>
 
   <main class="layout">
@@ -85,6 +85,7 @@
 
   <nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home">⌂<small>الرئيسية</small></button><button data-view="explore">⌕<small>استكشف</small></button><button data-view="notifications">♧<small>تنبيهات</small></button><button data-view="profile">◉<small>حسابي</small></button><button data-view="settings">⚙<small>الإعدادات</small></button></nav>
 
+  <dialog id="authDialog" class="dialog auth-dialog"><form id="authForm"><div class="dialog-head"><div><span class="eyebrow">أهلاً بك في VYRO</span><h2 id="authTitle">أنشئ حسابك</h2></div><button class="close-btn" type="button" id="closeAuth" aria-label="إغلاق">×</button></div><p class="settings-note" id="authDescription">انضم لمجتمع VYRO وابدأ التواصل مع العالم.</p><label>الاسم<input id="authName" maxlength="32" autocomplete="name" placeholder="اسمك" required></label><label>البريد الإلكتروني<input id="authEmail" type="email" autocomplete="email" placeholder="name@example.com" required></label><label>كلمة المرور<input id="authPassword" type="password" minlength="8" autocomplete="new-password" placeholder="8 أحرف على الأقل" required></label><p id="authMessage" class="auth-message" role="status"></p><button class="primary-btn auth-submit" id="authSubmit" type="submit">إنشاء الحساب</button><button class="text-btn" id="authSwitch" type="button">لديك حساب؟ تسجيل الدخول</button><button class="text-btn" id="forgotPassword" type="button">نسيت كلمة المرور؟</button></form></dialog>
   <dialog id="profileDialog" class="dialog">
     <form method="dialog" id="profileForm"><div class="dialog-head"><h2>ملفك الشخصي</h2><button class="close-btn" value="cancel" aria-label="إغلاق">×</button></div>
       <label>اسم العرض<input id="profileName" maxlength="32" required placeholder="اسمك"></label>
@@ -95,5 +96,6 @@
   <dialog id="storyDialog" class="dialog"><form method="dialog"><div class="dialog-head"><h2>قصتك</h2><button class="close-btn" value="cancel">×</button></div><p>ميزة القصص قيد التطوير. تقدر تنشر لحظتك كمنشور دلوقتي.</p><button class="primary-btn" value="cancel">تمام</button></form></dialog>
   <div id="toast" class="toast" role="status"></div>
   <script src="app.js" defer></script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
