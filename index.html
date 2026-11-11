@@ -26,6 +26,7 @@
         <button class="nav-link" data-view="explore">⌕ <span>استكشف</span></button>
         <button class="nav-link" data-view="notifications">♧ <span>الإشعارات</span><i id="notificationDot"></i></button>
         <button class="nav-link" data-view="profile">◉ <span>ملفي الشخصي</span></button>
+        <button class="nav-link" data-view="settings">⚙ <span>الإعدادات</span></button>
       </nav>
       <div class="sidebar-note">مساحتك. صوتك. عالمك.<b>VYRO</b></div>
     </aside>
@@ -49,6 +50,29 @@
 
       <div class="feed-heading"><h1 id="viewTitle">آخر المنشورات</h1><span class="live-dot">● مباشر على جهازك</span></div>
       <div id="feed" class="feed" aria-live="polite"></div>
+      <section id="settingsPanel" class="settings-panel" hidden>
+        <div class="settings-intro"><span class="eyebrow">تحكم كامل</span><h2>إعدادات VYRO</h2><p>خصص تجربتك بالطريقة اللي تناسبك. التغييرات محفوظة على هذا الجهاز.</p></div>
+        <section class="settings-group"><h3>المظهر والتصميم</h3>
+          <label class="setting-row"><span><b>وضع العرض</b><small>اختار المظهر المريح لعينيك</small></span><select id="settingTheme"><option value="dark">داكن</option><option value="light">فاتح</option></select></label>
+          <label class="setting-row"><span><b>لون التطبيق</b><small>لون الأزرار والعناصر البارزة</small></span><select id="settingAccent"><option value="purple">بنفسجي</option><option value="cyan">تركواز</option><option value="rose">وردي</option></select></label>
+          <label class="setting-row"><span><b>حجم الخط</b><small>تكبير النصوص لسهولة القراءة</small></span><select id="settingFont"><option value="normal">عادي</option><option value="large">كبير</option></select></label>
+          <label class="setting-row"><span><b>عرض مضغوط</b><small>تقليل المسافات لعرض منشورات أكثر</small></span><input type="checkbox" id="settingCompact"></label>
+          <label class="setting-row"><span><b>تقليل الحركة</b><small>تقليل التأثيرات المتحركة</small></span><input type="checkbox" id="settingMotion"></label>
+        </section>
+        <section class="settings-group"><h3>تفضيلات المحتوى</h3>
+          <label class="setting-row"><span><b>إظهار القصص</b><small>إظهار شريط القصص أعلى الصفحة</small></span><input type="checkbox" id="settingStories"></label>
+          <label class="setting-row"><span><b>ترتيب المنشورات</b><small>طريقة عرض المنشورات في الصفحة الرئيسية</small></span><select id="settingSort"><option value="newest">الأحدث أولاً</option><option value="oldest">الأقدم أولاً</option><option value="popular">الأكثر إعجاباً</option></select></label>
+        </section>
+        <section class="settings-group"><h3>الإشعارات والخصوصية</h3>
+          <label class="setting-row"><span><b>تفضيل إشعارات التفاعل</b><small>احفظ اختيارك لتفعيله عند إضافة خادم الإشعارات</small></span><input type="checkbox" id="settingNotifyLikes"></label>
+          <label class="setting-row"><span><b>تفضيل إشعارات التعليقات</b><small>إعداد محلي، لا يرسل إشعارات حقيقية حالياً</small></span><input type="checkbox" id="settingNotifyComments"></label>
+          <p class="settings-note">ملاحظة: لا يوجد تسجيل دخول أو مزامنة سحابية حتى الآن. هذه الخيارات لا تجعل المنشورات عامة أو خاصة على الإنترنت.</p>
+        </section>
+        <section class="settings-group"><h3>بياناتك على هذا الجهاز</h3><p class="settings-note">تقدر تنزّل نسخة من ملفك ومنشوراتك وتعليقاتك، أو تستعيد نسخة سابقة.</p>
+          <div class="settings-buttons"><button class="outline-btn" id="exportData">تنزيل نسخة احتياطية</button><button class="outline-btn" id="importDataBtn">استعادة نسخة</button><input id="importDataFile" type="file" accept="application/json,.json" hidden><button class="danger-btn" id="resetData">إعادة ضبط التطبيق</button></div>
+        </section>
+        <p class="settings-foot">VYRO · إعدادات النسخة التجريبية</p>
+      </section>
     </section>
 
     <aside class="rightbar">
@@ -58,7 +82,7 @@
     </aside>
   </main>
 
-  <nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home">⌂<small>الرئيسية</small></button><button data-view="explore">⌕<small>استكشف</small></button><button data-view="notifications">♧<small>تنبيهات</small></button><button data-view="profile">◉<small>حسابي</small></button></nav>
+  <nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home">⌂<small>الرئيسية</small></button><button data-view="explore">⌕<small>استكشف</small></button><button data-view="notifications">♧<small>تنبيهات</small></button><button data-view="profile">◉<small>حسابي</small></button><button data-view="settings">⚙<small>الإعدادات</small></button></nav>
 
   <dialog id="profileDialog" class="dialog">
     <form method="dialog" id="profileForm"><div class="dialog-head"><h2>ملفك الشخصي</h2><button class="close-btn" value="cancel" aria-label="إغلاق">×</button></div>
