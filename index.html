@@ -1,101 +1,58 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#0b0d14">
-  <meta name="description" content="VYRO — مساحة تجمعك بالناس والأفكار واللحظات.">
-  <title>VYRO — تواصل بطريقتك</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090b12"><meta name="description" content="VYRO — عالمك الاجتماعي، صوتك وحكاياتك.">
+<title>VYRO — عالمك الاجتماعي</title>
+<link rel="manifest" href="manifest.json"><link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#" aria-label="VYRO الرئيسية">VYRO<span>.</span></a>
-    <label class="search"><span>⌕</span><input id="searchInput" type="search" placeholder="ابحث في VYRO" aria-label="بحث"></label>
-    <button class="icon-btn" id="installBtn" hidden aria-label="تثبيت التطبيق">⇩</button>
-    <button class="icon-btn settings-shortcut" data-view="settings" aria-label="الإعدادات" title="الإعدادات">⚙</button>
-    <button class="outline-btn auth-open" id="authButton">دخول / حساب جديد</button><button class="avatar avatar-small" id="topProfile" aria-label="الملف الشخصي">أ</button>
-  </header>
-
-  <main class="layout">
-    <aside class="sidebar card">
-      <div class="profile-mini"><div class="avatar avatar-large" id="sideAvatar">أ</div><div><strong id="sideName">أهلاً بيك</strong><small>@vyro_user</small></div></div>
-      <nav class="side-nav" aria-label="التنقل الرئيسي">
-        <button class="nav-link active" data-view="home">⌂ <span>الرئيسية</span></button>
-        <button class="nav-link" data-view="explore">⌕ <span>استكشف</span></button>
-        <button class="nav-link" data-view="notifications">♧ <span>الإشعارات</span><i id="notificationDot"></i></button>
-        <button class="nav-link" data-view="profile">◉ <span>ملفي الشخصي</span></button>
-        <button class="nav-link" data-view="settings">⚙ <span>الإعدادات</span></button>
-      </nav>
-      <div class="sidebar-note">مساحتك. صوتك. عالمك.<b>VYRO</b></div>
-    </aside>
-
-    <section class="feed-column">
-      <section class="stories card">
-        <div class="section-heading"><strong>القصص</strong><small>لحظات سريعة من الناس</small></div>
-        <div class="story-row" id="storyRow">
-          <button class="story add-story" id="addStory"><span class="story-ring"><b>＋</b></span><small>أضف قصتك</small></button>
-          <div class="story"><span class="story-ring gradient-a">م</span><small>مريم</small></div>
-          <div class="story"><span class="story-ring gradient-b">ع</span><small>عمر</small></div>
-          <div class="story"><span class="story-ring gradient-c">س</span><small>سارة</small></div>
-          <div class="story"><span class="story-ring gradient-d">ي</span><small>يوسف</small></div>
-        </div>
-      </section>
-
-      <section class="composer card" id="composer">
-        <div class="composer-top"><div class="avatar" id="composerAvatar">أ</div><textarea id="postText" rows="2" maxlength="1000" placeholder="إيه اللي حابب تشاركه؟"></textarea></div>
-        <div class="composer-bottom"><span id="charCount">0/1000</span><button class="primary-btn" id="publishBtn">انشر منشورك ↗</button></div>
-      </section>
-
-      <div class="feed-heading"><h1 id="viewTitle">آخر المنشورات</h1><span class="live-dot">● مباشر على جهازك</span></div>
-      <div id="feed" class="feed" aria-live="polite"></div>
-      <section id="settingsPanel" class="settings-panel" hidden>
-        <div class="settings-intro"><span class="eyebrow">تحكم كامل</span><h2>إعدادات VYRO</h2><p>خصص تجربتك بالطريقة اللي تناسبك. التغييرات محفوظة على هذا الجهاز.</p></div>
-        <section class="settings-group"><h3>المظهر والتصميم</h3>
-          <label class="setting-row"><span><b>وضع العرض</b><small>اختار المظهر المريح لعينيك</small></span><select id="settingTheme"><option value="dark">داكن</option><option value="light">فاتح</option></select></label>
-          <label class="setting-row"><span><b>لون التطبيق</b><small>لون الأزرار والعناصر البارزة</small></span><select id="settingAccent"><option value="purple">بنفسجي</option><option value="cyan">تركواز</option><option value="rose">وردي</option></select></label>
-          <label class="setting-row"><span><b>حجم الخط</b><small>تكبير النصوص لسهولة القراءة</small></span><select id="settingFont"><option value="normal">عادي</option><option value="large">كبير</option></select></label>
-          <label class="setting-row"><span><b>عرض مضغوط</b><small>تقليل المسافات لعرض منشورات أكثر</small></span><input type="checkbox" id="settingCompact"></label>
-          <label class="setting-row"><span><b>تقليل الحركة</b><small>تقليل التأثيرات المتحركة</small></span><input type="checkbox" id="settingMotion"></label>
-        </section>
-        <section class="settings-group"><h3>تفضيلات المحتوى</h3>
-          <label class="setting-row"><span><b>إظهار القصص</b><small>إظهار شريط القصص أعلى الصفحة</small></span><input type="checkbox" id="settingStories"></label>
-          <label class="setting-row"><span><b>ترتيب المنشورات</b><small>طريقة عرض المنشورات في الصفحة الرئيسية</small></span><select id="settingSort"><option value="newest">الأحدث أولاً</option><option value="oldest">الأقدم أولاً</option><option value="popular">الأكثر إعجاباً</option></select></label>
-        </section>
-        <section class="settings-group"><h3>الإشعارات والخصوصية</h3>
-          <label class="setting-row"><span><b>تفضيل إشعارات التفاعل</b><small>احفظ اختيارك لتفعيله عند إضافة خادم الإشعارات</small></span><input type="checkbox" id="settingNotifyLikes"></label>
-          <label class="setting-row"><span><b>تفضيل إشعارات التعليقات</b><small>إعداد محلي، لا يرسل إشعارات حقيقية حالياً</small></span><input type="checkbox" id="settingNotifyComments"></label>
-          <p class="settings-note">ملاحظة: لا يوجد تسجيل دخول أو مزامنة سحابية حتى الآن. هذه الخيارات لا تجعل المنشورات عامة أو خاصة على الإنترنت.</p>
-        </section>
-        <section class="settings-group"><h3>بياناتك على هذا الجهاز</h3><p class="settings-note">تقدر تنزّل نسخة من ملفك ومنشوراتك وتعليقاتك، أو تستعيد نسخة سابقة.</p>
-          <div class="settings-buttons"><button class="outline-btn" id="exportData">تنزيل نسخة احتياطية</button><button class="outline-btn" id="importDataBtn">استعادة نسخة</button><input id="importDataFile" type="file" accept="application/json,.json" hidden><button class="danger-btn" id="resetData">إعادة ضبط التطبيق</button></div>
-        </section>
-        <p class="settings-foot">VYRO · إعدادات النسخة التجريبية</p>
-      </section>
-    </section>
-
-    <aside class="rightbar">
-      <section class="card welcome-card"><span class="eyebrow">مرحباً بك في</span><div class="welcome-logo">VYRO<span>.</span></div><p>مكانك للتواصل ومشاركة اللحظات والأفكار.</p><button class="outline-btn" id="editProfileBtn">خصص ملفك الشخصي</button></section>
-      <section class="card trends"><div class="section-heading"><strong>اكتشف VYRO</strong><small>مواضيع مقترحة</small></div><p># يوميات</p><p># تقنية</p><p># تصوير</p><p># أفكار_جديدة</p></section>
-      <p class="footer-note">VYRO © 2026 · نسخة تجريبية</p>
-    </aside>
-  </main>
-
-  <nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home">⌂<small>الرئيسية</small></button><button data-view="explore">⌕<small>استكشف</small></button><button data-view="notifications">♧<small>تنبيهات</small></button><button data-view="profile">◉<small>حسابي</small></button><button data-view="settings">⚙<small>الإعدادات</small></button></nav>
-
-  <dialog id="authDialog" class="dialog auth-dialog"><form id="authForm"><div class="dialog-head"><div><span class="eyebrow">أهلاً بك في VYRO</span><h2 id="authTitle">أنشئ حسابك</h2></div><button class="close-btn" type="button" id="closeAuth" aria-label="إغلاق">×</button></div><p class="settings-note" id="authDescription">انضم لمجتمع VYRO وابدأ التواصل مع العالم.</p><label>الاسم<input id="authName" maxlength="32" autocomplete="name" placeholder="اسمك" required></label><label>البريد الإلكتروني<input id="authEmail" type="email" autocomplete="email" placeholder="name@example.com" required></label><label>كلمة المرور<input id="authPassword" type="password" minlength="8" autocomplete="new-password" placeholder="8 أحرف على الأقل" required></label><p id="authMessage" class="auth-message" role="status"></p><button class="primary-btn auth-submit" id="authSubmit" type="submit">إنشاء الحساب</button><button class="text-btn" id="authSwitch" type="button">لديك حساب؟ تسجيل الدخول</button><button class="text-btn" id="forgotPassword" type="button">نسيت كلمة المرور؟</button></form></dialog>
-  <dialog id="profileDialog" class="dialog">
-    <form method="dialog" id="profileForm"><div class="dialog-head"><h2>ملفك الشخصي</h2><button class="close-btn" value="cancel" aria-label="إغلاق">×</button></div>
-      <label>اسم العرض<input id="profileName" maxlength="32" required placeholder="اسمك"></label>
-      <label>نبذة عنك<textarea id="profileBio" maxlength="160" rows="3" placeholder="اكتب نبذة بسيطة..."></textarea></label>
-      <div class="dialog-actions"><button class="outline-btn" value="cancel">إلغاء</button><button class="primary-btn" id="saveProfile" value="default">حفظ التغييرات</button></div>
-    </form>
-  </dialog>
-  <dialog id="storyDialog" class="dialog"><form method="dialog"><div class="dialog-head"><h2>قصتك</h2><button class="close-btn" value="cancel">×</button></div><p>ميزة القصص قيد التطوير. تقدر تنشر لحظتك كمنشور دلوقتي.</p><button class="primary-btn" value="cancel">تمام</button></form></dialog>
-  <div id="toast" class="toast" role="status"></div>
-  <script src="app.js" defer></script>
-  <script type="module" src="auth.js"></script>
-</body>
-</html>
+<header class="topbar">
+ <a class="brand" href="#" aria-label="VYRO الرئيسية">VYRO<span>.</span></a>
+ <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16 16 4 4"/></svg><input id="searchInput" type="search" placeholder="ابحث عن أشخاص ومنشورات..." aria-label="بحث"></label>
+ <div class="top-actions"><button class="icon-btn" id="installBtn" hidden aria-label="تثبيت التطبيق">↓</button><button class="icon-btn" data-view="settings" aria-label="الإعدادات" title="الإعدادات"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19.4 15 .1.1 1.4 1.1-1.5 2.6-1.7-.7a8 8 0 0 1-1.8 1l-.3 1.9h-3l-.3-1.9a8 8 0 0 1-1.8-1l-1.7.7-1.5-2.6 1.4-1.1a8 8 0 0 1 0-2l-1.4-1.1 1.5-2.6 1.7.7a8 8 0 0 1 1.8-1l.3-1.9h3l.3 1.9a8 8 0 0 1 1.8 1l1.7-.7 1.5 2.6-1.4 1.1a8 8 0 0 1 0 2Z"/></svg></button><button class="outline-btn auth-open" id="authButton">تسجيل الدخول</button><button class="avatar avatar-small" id="topProfile" aria-label="الملف الشخصي">V</button></div>
+</header>
+<main class="layout">
+<aside class="sidebar card"><div class="profile-mini"><div class="avatar avatar-large" id="sideAvatar">V</div><div><strong id="sideName">مرحباً بك</strong><small id="sideHandle">@vyro</small></div></div>
+<nav class="side-nav" aria-label="التنقل">
+<button class="nav-link active" data-view="home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1Z"/></svg><span>الرئيسية</span></button>
+<button class="nav-link" data-view="explore"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 5 5"/></svg><span>استكشف</span></button>
+<button class="nav-link" data-view="notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><span>الإشعارات</span><i id="notificationDot"></i></button>
+<button class="nav-link" data-view="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>ملفي الشخصي</span></button>
+<button class="nav-link" data-view="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19 13 2 1-2 4-2-1-2 1v2h-5v-2l-2-1-2 1-2-4 2-1v-2l-2-1 2-4 2 1 2-1V4h5v2l2 1 2-1 2 4-2 1Z"/></svg><span>الإعدادات</span></button>
+</nav><div class="sidebar-note">مساحتك. صوتك. عالمك.<b>VYRO</b></div></aside>
+<section class="feed-column">
+<section class="stories card" id="stories"><div class="section-heading"><div><strong>لحظات المجتمع</strong><small>شارك لحظاتك مع العالم</small></div><span class="eyebrow">قريباً</span></div><div class="story-row"><div class="story-placeholder"><span>✦</span><b>القصص قيد التطوير</b><small>نجهز لك تجربة أجمل</small></div></div></section>
+<section class="composer card" id="composer"><div class="composer-top"><div class="avatar" id="composerAvatar">V</div><textarea id="postText" rows="2" maxlength="1000" placeholder="ما الذي يدور في بالك؟ شاركه مع مجتمع VYRO..."></textarea></div><div class="composer-bottom"><span id="charCount">0 / 1000</span><button class="primary-btn" id="publishBtn"><svg viewBox="0 0 24 24"><path d="m4 12 16-8-6 16-3-7Z"/><path d="m11 13 5-5"/></svg> نشر المنشور</button></div></section>
+<div class="feed-heading"><div><span class="eyebrow">مساحة المجتمع</span><h1 id="viewTitle">أحدث المنشورات</h1></div><span class="live-dot"><i></i> متصل بالمجتمع</span></div>
+<div id="feed" class="feed" aria-live="polite"><div class="loading-state">جاري تحميل مجتمع VYRO...</div></div>
+<section id="settingsPanel" class="settings-panel" hidden>
+<div class="settings-intro"><span class="eyebrow">مساحتك الخاصة</span><h2>الإعدادات</h2><p>تحكم في تجربتك واجعل VYRO يشبهك.</p></div>
+<section class="settings-group"><h3>المظهر وإمكانية الوصول</h3>
+<label class="setting-row"><span><b>المظهر</b><small>اختر الوضع المناسب لك</small></span><select id="settingTheme"><option value="dark">داكن</option><option value="light">فاتح</option></select></label>
+<label class="setting-row"><span><b>لون الواجهة</b><small>لون العناصر الرئيسية</small></span><select id="settingAccent"><option value="purple">بنفسجي</option><option value="cyan">تركواز</option><option value="rose">وردي</option></select></label>
+<label class="setting-row"><span><b>حجم الخط</b><small>تحسين وضوح النصوص</small></span><select id="settingFont"><option value="normal">عادي</option><option value="large">كبير</option></select></label>
+<label class="setting-row"><span><b>تقليل الحركة</b><small>تقليل الانتقالات والمؤثرات</small></span><input type="checkbox" id="settingMotion"></label>
+<label class="setting-row"><span><b>عرض مضغوط</b><small>مساحة أكبر للمنشورات</small></span><input type="checkbox" id="settingCompact"></label></section>
+<section class="settings-group"><h3>الحساب والخصوصية</h3><button class="setting-action" id="settingsProfile">تعديل الملف الشخصي <span>←</span></button><button class="setting-action" id="settingsPassword">تغيير كلمة المرور <span>←</span></button><p class="settings-note">إعدادات الخصوصية المتقدمة وإدارة الجلسات ستضاف مع استكمال خدمات الحساب.</p></section>
+<section class="settings-group"><h3>بياناتك</h3><div class="settings-buttons"><button class="outline-btn" id="exportData">تنزيل نسخة احتياطية</button><button class="danger-btn" id="resetData">مسح البيانات المحلية</button></div></section>
+<div class="settings-foot">VYRO · إصدار تجريبي قيد التطوير</div>
+</section>
+</section>
+<aside class="rightbar"><section class="card welcome-card"><span class="eyebrow">مرحباً بك في عالم</span><div class="welcome-logo">VYRO<span>.</span></div><p>تواصل، اكتشف، وشارك أفكارك مع مجتمع يتسع للجميع.</p><button class="outline-btn" id="editProfileBtn">تخصيص ملفك الشخصي</button></section><section class="card trends"><div class="section-heading"><strong>اكتشف اهتماماتك</strong><small>مساحات مقترحة</small></div><p># التقنية والابتكار</p><p># يوميات وحكايات</p><p># التصوير والإبداع</p></section><p class="footer-note">VYRO © 2026</p></aside>
+</main>
+<nav class="mobile-nav" aria-label="التنقل"><button class="active" data-view="home"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10h-6v-7H9v7H3Z"/></svg><small>الرئيسية</small></button><button data-view="explore"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="7.2"/><path d="m16 16 5 5"/></svg><small>استكشف</small></button><button data-view="notifications"><svg viewBox="0 0 24 24"><path d="M18 9a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg><small>تنبيهات</small></button><button data-view="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><small>حسابي</small></button><button data-view="settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="m19 13 2 1-2 4-2-1-2 1v2h-5v-2l-2-1-2 1-2-4 2-1v-2l-2-1 2-4 2 1 2-1V4h5v2l2 1 2-1 2 4-2 1Z"/></svg><small>الإعدادات</small></button></nav>
+<dialog id="authDialog" class="dialog auth-dialog"><form id="authForm"><div class="dialog-head"><div><span class="eyebrow">انضم إلى مجتمع VYRO</span><h2 id="authTitle">إنشاء حساب جديد</h2></div><button class="close-btn" type="button" id="closeAuth" aria-label="إغلاق">×</button></div><p class="settings-note" id="authDescription">ابدأ رحلتك وكن جزءاً من مجتمعنا.</p>
+<label id="authNameWrap">الاسم<input id="authName" maxlength="32" autocomplete="name" placeholder="اسمك الكامل"></label>
+<label>البريد الإلكتروني<input id="authEmail" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+<label id="authPasswordWrap">كلمة المرور<input id="authPassword" type="password" minlength="8" autocomplete="new-password" placeholder="8 أحرف على الأقل" required></label>
+<label id="authTokenWrap" hidden>رمز التأكيد<input id="authToken" inputmode="numeric" autocomplete="one-time-code" maxlength="8" placeholder="أدخل رمز البريد"></label>
+<p id="authMessage" class="auth-message" role="status"></p><button class="primary-btn auth-submit" id="authSubmit" type="submit">إنشاء الحساب</button>
+<button class="text-btn" id="authSwitch" type="button">لديك حساب؟ تسجيل الدخول</button><button class="text-btn" id="forgotPassword" type="button">نسيت كلمة المرور؟</button></form></dialog>
+<dialog id="profileDialog" class="dialog"><form id="profileForm"><div class="dialog-head"><h2>تعديل الملف الشخصي</h2><button class="close-btn" type="button" id="closeProfile">×</button></div><label>اسم العرض<input id="profileName" maxlength="32" required></label><label>اسم المستخدم<input id="profileUsername" maxlength="24" placeholder="username" dir="ltr"></label><label>نبذة عنك<textarea id="profileBio" maxlength="160" rows="3"></textarea></label><div class="dialog-actions"><button class="primary-btn" type="submit">حفظ التغييرات</button></div></form></dialog>
+<div id="toast" class="toast" role="status"></div>
+<script type="module" src="auth.js"></script><script type="module" src="app.js"></script>
+</body></html>
