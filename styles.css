@@ -12,3 +12,5 @@ body.large-font{font-size:18px}body.large-font .post-body{font-size:16px}body.la
 body.compact .post-card{padding:11px;margin-bottom:9px}body.compact .stories{padding:11px}body.compact .composer{padding:11px;margin-bottom:14px}body.compact .post-body{margin:9px 0}
 body.reduce-motion *,body.reduce-motion *:before,body.reduce-motion *:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}
 @media(max-width:680px){.mobile-nav button{min-width:0;flex:1;font-size:19px}.mobile-nav small{font-size:9px}.settings-group{padding:13px}.setting-row{gap:7px}.setting-row select{max-width:43%;padding:7px 5px}.settings-buttons>*{flex:1}.settings-intro h2{font-size:19px}}
+
+.settings-shortcut{font-size:20px;color:var(--purple);min-width:42px;min-height:40px;display:grid;place-items:center}.settings-panel{padding-bottom:22px}.settings-panel[hidden]{display:none!important}.feed-column:has(.settings-panel:not([hidden])) .stories,.feed-column:has(.settings-panel:not([hidden])) .composer{display:none!important}
