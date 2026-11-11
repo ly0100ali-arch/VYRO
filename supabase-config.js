@@ -1,3 +1,3 @@
 // ضع بيانات مشروع Supabase هنا بعد إنشائه. مفتاح anon/publishable مخصص للواجهة العامة ويجب حماية الجداول بسياسات RLS.
 export const SUPABASE_URL = "https://mmoallabauiregibssib.supabase.co";
-export const SUPABASE_ANON_KEY = "";
+export const SUPABASE_ANON_KEY = "sb_publishable_f8Gy1qtYyFcTOnz6r1McWw_43P24ebo";
